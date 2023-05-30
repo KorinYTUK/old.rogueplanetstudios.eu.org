@@ -1,0 +1,29 @@
+<style>
+    body{
+        font-family: Arial;
+    }
+</style>
+
+
+<h1>ESPLCompiler Documentation</h1>
+The ESPLCompiler is a program that compiles ESPL (HTML But Simpler!) code into HTML code. It processes a set of directives defined in the ESPL code and generates the corresponding HTML output.
+
+Directives
+The ESPLCompiler recognizes the following directives:
+
+<ul>
+<li>title: Defines the title of the HTML document.</li>
+<li>h1: Creates an <h1> heading.</li>
+<li>h2: Creates an <h2> heading.</li>
+<li>p: Creates a paragraph <p>.</li>
+<li>link: Creates an anchor <a> link.</li>
+</ul>
+
+<b>Usage</b>
+The ESPLCompiler can be used as a command-line tool with the following options:
+
+
+espl -build <input_file> -o <output_file>
+
+<code>-build, -b: Specifies the input ESPL file to compile.</code>
+<code>-o, --output: (Optional) Specifies the output HTML file. The default output file is index.html.</code>
