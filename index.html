@@ -3,13 +3,13 @@
 <head>
   <link rel="icon" type="image/x-icon" href="logo.ico">
   <meta property="og:title" content="Rogue Planet Studios" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://rogueplanetstudios.eu.org" />
-<meta property="og:description" content="[empty]" />
-<meta name="theme-color" content="#ff9933">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://rogueplanetstudios.eu.org" />
+  <meta property="og:description" content="Welcome to Rogue Planet Studios. Explore our projects and stay updated with the latest news." />
+  <meta name="theme-color" content="#ff9933">
   <title>Rogue Planet Studios</title>
   <style>
-    /* CSS to make the website stand out */
+    /* CSS to make the website visually appealing */
     body {
       background-color: #222;
       color: #fff;
@@ -24,37 +24,23 @@
       padding: 20px;
     }
     
-    .projects-link {
-      display: block;
-      text-align: center;
+    .projects-link, .news-link {
+      display: flex;
+      justify-content: center;
       margin-top: 30px;
     }
     
-    .projects-link a {
+    .projects-link a, .news-link a {
       color: #fff;
       text-decoration: none;
       background-color: #ff4f00;
       padding: 10px 20px;
       border-radius: 5px;
       font-weight: bold;
+      transition: background-color 0.3s ease;
     }
     
-    .link {
-      display: block;
-      text-align: center;
-      margin-top: 30px;
-    }
-    
-    .link a {
-      color: #fff;
-      text-decoration: none;
-      background-color: #ff4f00;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    
-    .projects-link a:hover {
+    .projects-link a:hover, .news-link a:hover {
       background-color: #ff8100;
     }
   </style>
@@ -64,8 +50,8 @@
   <div class="projects-link">
     <a href="projects/">View Projects</a>
   </div>
-  <div class="link">
-    <a href="news.html">  View News  </a>
+  <div class="news-link">
+    <a href="news.html">View News</a>
   </div>
 </body>
 </html>
