@@ -1,0 +1,84 @@
+<h1ml>
+  <head>
+  <title>Meep Chat</title>
+  <style>
+/* CSS styles for the chat interface */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+#chatbox {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+p {
+  margin: 5px 0;
+}
+
+  </style>
+</head>
+<body>
+  <div id="chatbox"></div>
+  <div>
+    <input type="text" id="inputField" placeholder="Type your message">
+    <button id="sendButton">Send</button>
+  </div>
+</body>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const chatbox = document.getElementById("chatbox");
+  const generateButton = document.getElementById("generateButton");
+  const inputField = document.getElementById("inputField");
+  const sendButton = document.getElementById("sendButton");
+
+
+  sendButton.addEventListener("click", function() {
+    const userMessage = inputField.value;
+    if (userMessage) {
+      const messageElement = document.createElement("p");
+      messageElement.textContent = userMessage;
+      chatbox.appendChild(messageElement);
+      chatbox.scrollTop = chatbox.scrollHeight; // Auto scroll to bottom
+      inputField.value = "";
+      generateMeep();
+    }
+  });
+
+  function generateMeep() {
+    const variations = ["Meep", "Meep.", "Meep!", "Meep?"];
+    const count = Math.floor(Math.random() * 10) + 1;
+    let meepString = "";
+
+    for (let i = 0; i < count; i++) {
+      const randomIndex = Math.floor(Math.random() * variations.length);
+      const meep = variations[randomIndex];
+      meepString += meep + " ";
+    }
+
+    const messageElement = document.createElement("p");
+    messageElement.textContent = meepString.trim();
+    chatbox.appendChild(messageElement);
+    chatbox.scrollTop = chatbox.scrollHeight; // Auto scroll to bottom
+  }
+});
+
+  </script>
+</h1ml>
