@@ -177,44 +177,7 @@ footer p {
 </body>
   <script>
 function popup(gameName, info, price) {
-  // Create the popup container
-  var popupContainer = document.createElement('div');
-  popupContainer.className = 'popup';
-
-  // Create the popup content
-  var content = document.createElement('div');
-  content.className = 'popup-content';
-
-  // Create the game name element
-  var gameNameElement = document.createElement('h2');
-  gameNameElement.textContent = gameName;
-  content.appendChild(gameNameElement);
-
-  // Create the info element
-  var infoElement = document.createElement('p');
-  infoElement.textContent = info;
-  content.appendChild(infoElement);
-
-  // Create the price element
-  var priceElement = document.createElement('p');
-  priceElement.textContent = 'Price: ' + price;
-  content.appendChild(priceElement);
-
-  // Create the close button
-  var closeButton = document.createElement('span');
-  closeButton.className = 'close';
-  closeButton.textContent = '×';
-  closeButton.addEventListener('click', function() {
-    // Remove the popup when close button is clicked
-    document.body.removeChild(popupContainer);
-  });
-  content.appendChild(closeButton);
-
-  // Append the content to the popup container
-  popupContainer.appendChild(content);
-
-  // Append the popup container to the body
-  document.body.appendChild(popupContainer);
+    
 }
 
   </script>
