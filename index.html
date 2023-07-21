@@ -10,7 +10,8 @@
   <title>Rogue Planet Studios</title>
   <style>
     body {
-      background-color: #f0f0f0;
+      background-color: #1a1a1a;
+      color: #f0f0f0;
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 0;
@@ -25,7 +26,6 @@
 
     p {
       font-size: 24px;
-      color: #666;
       max-width: 600px;
       margin: 0 auto;
       padding: 0 20px;
@@ -33,7 +33,7 @@
 
     .team {
       font-size: 20px;
-      color: #444;
+      color: #ff9933;
     }
 
     ul {
@@ -73,12 +73,36 @@
 
       .team {
         font-size: 18px;
+        color: #ff9933;
       }
 
       .cta-button {
         font-size: 18px;
         padding: 10px 20px;
       }
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+    .dark-mode h1 {
+      color: #ff9933;
+    }
+
+    .dark-mode .team {
+      color: #ff9933;
+    }
+
+    .dark-mode .cta-button {
+      background-color: #ff9933;
+      color: #fff;
+    }
+
+    .dark-mode .cta-button:hover {
+      background-color: #e68228;
     }
   </style>
 </head>
@@ -94,5 +118,13 @@
   <a href="http://rogueplanetstudios.eu.org/projects" class="cta-button">Explore Our Projects</a>
   <a href="http://rogueplanetstudios.eu.org/shop" class="cta-button">Games/Shop</a>
   <a href="http://rogueplanetstudios.eu.org/discord" class="cta-button">Join us on Discord</a>
+
+  <script>
+    // Toggle dark mode
+    function toggleDarkMode() {
+      const body = document.querySelector('body');
+      body.classList.toggle('dark-mode');
+    }
+  </script>
 </body>
 </html>
