@@ -6,12 +6,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://rogueplanetstudios.eu.org" />
   <meta property="og:description" content="Welcome to Rogue Planet Studios. Explore our projects and stay updated with the latest news." />
-  <meta name="theme-color" content="#ff9933">
+  <meta name="theme-color" content="#1a1a1a">
   <title>Rogue Planet Studios</title>
   <style>
     body {
       background-color: #1a1a1a;
-      color: #f0f0f0;
+      color: #fff;
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 0;
@@ -19,9 +19,10 @@
     }
 
     h1 {
-      font-size: 48px;
+      font-size: 64px;
       color: #ff9933;
-      margin-top: 50px;
+      margin-top: 80px;
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     p {
@@ -54,6 +55,7 @@
       border-radius: 5px;
       text-decoration: none;
       margin-top: 30px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .cta-button:hover {
@@ -62,8 +64,8 @@
 
     @media screen and (max-width: 600px) {
       h1 {
-        font-size: 36px;
-        margin-top: 30px;
+        font-size: 48px;
+        margin-top: 50px;
       }
 
       p {
@@ -81,29 +83,6 @@
         padding: 10px 20px;
       }
     }
-
-    /* Dark mode styles */
-    body.dark-mode {
-      background-color: #121212;
-      color: #f0f0f0;
-    }
-
-    .dark-mode h1 {
-      color: #ff9933;
-    }
-
-    .dark-mode .team {
-      color: #ff9933;
-    }
-
-    .dark-mode .cta-button {
-      background-color: #ff9933;
-      color: #fff;
-    }
-
-    .dark-mode .cta-button:hover {
-      background-color: #e68228;
-    }
   </style>
 </head>
 <body>
@@ -120,11 +99,9 @@
   <a href="http://rogueplanetstudios.eu.org/discord" class="cta-button">Join us on Discord</a>
 
   <script>
-    // Toggle dark mode
-    function toggleDarkMode() {
-      const body = document.querySelector('body');
-      body.classList.toggle('dark-mode');
-    }
+    // Make the website dark mode only
+    const body = document.querySelector('body');
+    body.classList.add('dark-mode');
   </script>
 </body>
 </html>
