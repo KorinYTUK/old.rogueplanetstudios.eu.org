@@ -6,102 +6,85 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://rogueplanetstudios.eu.org" />
   <meta property="og:description" content="Welcome to Rogue Planet Studios. Explore our projects and stay updated with the latest news." />
-  <meta name="theme-color" content="#1a1a1a">
   <title>Rogue Planet Studios</title>
-  <style>
-    body {
-      background-color: #1a1a1a;
-      color: #fff;
-      font-family: 'Helvetica Neue', sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 30px 0;
-    }
-
-    h1 {
-      font-size: 48px;
-      color: #ff9933;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .team {
-      font-size: 24px;
-      color: #ff9933;
-      margin-top: 30px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background-color: #ff9933;
-      color: #fff;
-      font-size: 20px;
-      padding: 15px 30px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin-top: 40px;
-      transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background-color: #e68228;
-    }
-
-    @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 36px;
-      }
-
-      p {
-        font-size: 18px;
-      }
-
-      .team {
-        font-size: 20px;
-      }
-
-      .cta-button {
-        font-size: 18px;
-        padding: 12px 24px;
-      }
-    }
-  </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #666;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .member {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+        }
+        .member img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to Rogue Planet Studios</h1>
-    <p>We are a team of passionate developers and creators, crafting exciting games and cutting-edge software that push the boundaries of technology.</p>
-  </header>
-  <section class="team">
-    <h2>Meet our founders:</h2>
-    <ul>
-      <li>Timothy Stanley "Korin"</li>
-      <li>K3ply</li>
-    </ul>
-  </section>
-  <section>
-    <p>Join us on our journey as we bring imagination to life and create experiences that leave a lasting impact. Together, we embark on an adventure through the realms of entertainment and technology.</p>
-    <a href="http://rogueplanetstudios.eu.org/projects" class="cta-button">Explore Our Projects</a>
-    <a href="http://rogueplanetstudios.eu.org/discord" class="cta-button">Join us on Discord</a>
-  </section>
+    <header>
+        <h1>Rogue Planet Studios</h1>
+        <p>We make games and programs. Meet our team!</p>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Games</a>
+        <a href="#">Programs</a>
+        <a href="#team">Team</a>
+    </nav>
+    <div class="container">
+        <h2 name="team">Meet Our Team</h2>
+        <div class="team">
+            <!-- Add team members here -->
+            <div class="member">
+                <img src="path/to/member1.jpg" alt="Member 1">
+                <h3>Member 1</h3>
+                <p>Role / Title</p>
+            </div>
+            <div class="member">
+                <img src="path/to/member2.jpg" alt="Member 2">
+                <h3>Member 2</h3>
+                <p>Role / Title</p>
+            </div>
+            <!-- Add more team members as needed -->
+        </div>
+    </div>
 </body>
 </html>
