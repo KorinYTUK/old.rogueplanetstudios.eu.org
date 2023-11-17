@@ -1,3 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+            color: #333;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #loading {
+            display: none;
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Generator</h1>
+    <label for="prompt">Enter your prompt:</label>
+    <input type="text" id="prompt" placeholder="Astronaut riding a horse">
+    <br>
+    <button onclick="generateImage()">Generate Image</button>
+    <p id="loading">Generating image...</p>
+    <div id="result"></div>
+
+    <script>
 async function query(data) {
     const apiKey = process.env.HF_KEY; // Access the environment variable
     const response = await fetch(
@@ -28,3 +100,7 @@ function generateImage() {
         resultDiv.appendChild(image);
     });
 }
+
+    </script>
+</body>
+</html>
