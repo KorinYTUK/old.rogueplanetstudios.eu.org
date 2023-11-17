@@ -1,1 +1,30 @@
-# Hey! #
+async function query(data) {
+    const apiKey = process.env.HF_KEY; // Access the environment variable
+    const response = await fetch(
+        "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2-1",
+        {
+            headers: { Authorization: `Bearer ${apiKey}` },
+            method: "POST",
+            body: JSON.stringify(data),
+        }
+    );
+    const result = await response.blob();
+    return result;
+}
+
+function generateImage() {
+    const prompt = document.getElementById("prompt").value;
+    const loadingText = document.getElementById("loading");
+    const resultDiv = document.getElementById("result");
+
+    loadingText.style.display = "block";
+    resultDiv.innerHTML = "";
+
+    query({ "inputs": prompt }).then((response) => {
+        loadingText.style.display = "none";
+
+        const image = document.createElement("img");
+        image.src = URL.createObjectURL(response);
+        resultDiv.appendChild(image);
+    });
+}
