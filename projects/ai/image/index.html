@@ -52,10 +52,17 @@
             margin-top: 20px;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
             margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 48%;
+            height: auto;
+            margin-bottom: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
@@ -65,9 +72,12 @@
     <label for="prompt">Enter your prompt:</label>
     <input type="text" id="prompt" placeholder="Astronaut riding a horse">
     <br>
-    <button onclick="generateImage()">Generate Image</button>
-    <p id="loading">Generating image...</p>
-    <div id="result"></div>
+    <label for="negativePrompt">Negative prompts:</label>
+    <input type="text" id="negativePrompt" placeholder="Scary space scene">
+    <br>
+    <button onclick="generateImages()">Generate Images</button>
+    <p id="loading">Generating images...</p>
+    <div id="result" class="image-container"></div>
 
     <script>
         async function query(data) {
@@ -83,21 +93,42 @@
             return result;
         }
 
-        function generateImage() {
+        function generateImages() {
             const prompt = document.getElementById("prompt").value;
+            const negativePrompt = document.getElementById("negativePrompt").value;
             const loadingText = document.getElementById("loading");
             const resultDiv = document.getElementById("result");
 
             loadingText.style.display = "block";
             resultDiv.innerHTML = "";
 
-            query({ "inputs": prompt }).then((response) => {
-                loadingText.style.display = "none";
+            // Generate and append four images for positive prompt
+            for (let i = 0; i < 2; i++) {
+                query({ "inputs": prompt }).then((response) => {
+                    const image = document.createElement("img");
+                    image.src = URL.createObjectURL(response);
+                    resultDiv.appendChild(image);
 
-                const image = document.createElement("img");
-                image.src = URL.createObjectURL(response);
-                resultDiv.appendChild(image);
-            });
+                    // Hide loading text when all images are loaded
+                    if (i === 1) {
+                        loadingText.style.display = "none";
+                    }
+                });
+            }
+
+            // Generate and append four images for negative prompt
+            for (let i = 0; i < 2; i++) {
+                query({ "inputs": negativePrompt }).then((response) => {
+                    const image = document.createElement("img");
+                    image.src = URL.createObjectURL(response);
+                    resultDiv.appendChild(image);
+
+                    // Hide loading text when all images are loaded
+                    if (i === 1) {
+                        loadingText.style.display = "none";
+                    }
+                });
+            }
         }
     </script>
 </body>
