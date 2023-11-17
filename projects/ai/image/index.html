@@ -102,29 +102,18 @@
             loadingText.style.display = "block";
             resultDiv.innerHTML = "";
 
-            // Generate and append four images for positive prompt
-            for (let i = 0; i < 2; i++) {
-                query({ "inputs": prompt }).then((response) => {
+            // Concatenate positive and negative prompts
+            const fullPrompt = prompt + " AND DO NOT: " + negativePrompt;
+
+            // Generate and append four images
+            for (let i = 0; i < 4; i++) {
+                query({ "inputs": fullPrompt }).then((response) => {
                     const image = document.createElement("img");
                     image.src = URL.createObjectURL(response);
                     resultDiv.appendChild(image);
 
                     // Hide loading text when all images are loaded
-                    if (i === 1) {
-                        loadingText.style.display = "none";
-                    }
-                });
-            }
-
-            // Generate and append four images for negative prompt
-            for (let i = 0; i < 2; i++) {
-                query({ "inputs": negativePrompt }).then((response) => {
-                    const image = document.createElement("img");
-                    image.src = URL.createObjectURL(response);
-                    resultDiv.appendChild(image);
-
-                    // Hide loading text when all images are loaded
-                    if (i === 1) {
+                    if (i === 3) {
                         loadingText.style.display = "none";
                     }
                 });
