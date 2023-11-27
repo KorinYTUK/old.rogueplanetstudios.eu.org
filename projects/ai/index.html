@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>AI Toolkit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: rgb(248, 100, 28);
+            padding: 1em;
+            text-align: center;
+            color: white;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        footer {
+            background-color: rgb(248, 100, 28);
+            padding: 1em;
+            text-align: center;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background-color: rgb(248, 100, 28);
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100px;
+        }
+        .tabcontent{
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Toolkit</h1>
+        <i><h4>By Rogue Planet Studios</h4></i>
+    </header>
+
+    <main>
+        <h2>Welcome!<br>Feel free to use our playground tools for free!</h2>
+    
+        <div class="tabs">
+            <center>
+            <button class="tablinks" onclick="openTab('text')">Text</button>
+            <button class="tablinks" onclick="openTab('image')">Image</button>
+            <button class="tablinks" onclick="openTab('music')">Music</button>
+            <button class="tablinks" onclick="openTab('speak')">Speak</button>
+        </center>
+        </div>
+    
+        <div id="text" class="tabcontent">
+            <iframe src="text.html" width="100%" height="500px"></iframe>
+        </div>
+    
+        <div id="image" class="tabcontent">
+            <iframe src="image.html" width="100%" height="500px"></iframe>
+        </div>
+    
+        <div id="music" class="tabcontent">
+            <iframe src="music.html" width="100%" height="500px"></iframe>
+        </div>
+    
+        <div id="speak" class="tabcontent">
+            <iframe src="speak.html" width="100%" height="500px"></iframe>
+        </div>
+    </main>
+    
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+        openTab('text');
+    </script>
+    
+
+    <footer>
+        <p>&copy; 2023 AI Toolkit By RPS. All rights reserved.</p>
+    </footer>
+</body>
+</html>
