@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #262626; /* Dark background */
+            color: #ffffff; /* Light text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #00bcd4; /* Cyan header */
+            padding: 1em;
+            text-align: center;
+            color: white;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            margin: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        #apiPicker {
+            width: 80%;
+            height: 40px; /* Increased height */
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        #inputPrompt {
+            width: 80%;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        #generateButton {
+            padding: 10px;
+            background-color: #00bcd4; /* Cyan button */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #outputImage {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Generation</h1>
+        <h3><i>If you get an error saying failed to generate, try another model!</i></h3>
+    </header>
+
+    <main>
+        <label for="apiPicker">Select Image Model:</label>
+        <br>
+        <select id="apiPicker">
+            <option value="https://api-inference.huggingface.co/models/Yntec/epiCPhotoGasm">[Recommended] EpicPhoto</option>
+            <option value="https://api-inference.huggingface.co/models/openskyml/dalle-3-xl">[Stable] DALL - E (v3)</option>
+            <option value="https://api-inference.huggingface.co/models/nerijs/pixel-art-xl">Pixel Art XL</option>
+            <option value="https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5">Stable Diff 1.5</option>
+            <option value="https://api-inference.huggingface.co/models/segmind/Segmind-Vega">Segamind-Vega</option>
+            <option value="https://api-inference.huggingface.co/models/playgroundai/playground-v2-1024px-aesthetic">Playground v2</option>
+            <!--<option value="https://api-inference.huggingface.co/models/dataautogpt3/OpenDalle">Open DALL - E</option>-->
+            <option value="https://api-inference.huggingface.co/models/prompthero/openjourney">Open Journey</option>
+            <option value="https://api-inference.huggingface.co/models/Lykon/dreamshaper-xl-turbo">Dream Shaper (Turbo)</option>
+            <!-- Add more options for additional APIs -->
+        </select>
+        <br>
+
+        <input type="text" id="inputPrompt" placeholder="Enter your prompt..." />
+        <br> <!-- Button below prompt -->
+        <button id="generateButton" onclick="generateImage()">Generate</button>
+        <br>
+        <img id="outputImage" src="img.png" alt="Generated Image">
+    </main>
+
+    <script>
+        async function queryImage(data, apiUrl) {
+            const response = await fetch(
+                apiUrl,
+                {
+                    headers: { Authorization: "Bearer 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" },
+                    method: "POST",
+                    body: JSON.stringify(data),
+                }
+            );
+            return response;
+        }
+    
+        async function generateImage() {
+            const inputPrompt = document.getElementById("inputPrompt").value;
+            if (inputPrompt.trim() === "") {
+                alert("Please enter a prompt.");
+                return;
+            }
+    
+            const apiPicker = document.getElementById("apiPicker");
+            const selectedApiUrl = apiPicker.options[apiPicker.selectedIndex].value;
+
+            // Display "Generating..." message
+            document.getElementById("outputImage").src = "";
+            document.getElementById("outputImage").alt = "Generating...";
+    
+            // Generate a random seed (ID) between -99999 and 9999
+            const seed = Math.floor(Math.random() * 19999) - 9999;
+    
+            // Append the seed to the end of the prompt
+            const promptWithSeed = `${inputPrompt}   ID: ${seed}`;
+    
+            try {
+                const response = await queryImage({ "inputs": promptWithSeed }, selectedApiUrl);
+    
+                if (response.ok) {
+                    // Assuming the response is directly the image
+                    const blob = await response.blob();
+    
+                    const outputImage = document.getElementById("outputImage");
+                    outputImage.src = URL.createObjectURL(blob);
+                    outputImage.alt = "Generated Image";
+                } else {
+                    console.error("Error generating image. HTTP status:", response.status);
+                    alert("Error generating image. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error generating image:", error);
+                alert("Error generating image. Please try again.");
+            }
+        }
+    </script>
+    
+</body>
+</html>
